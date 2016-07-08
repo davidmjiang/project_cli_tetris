@@ -22,6 +22,8 @@ class Board
       @block.quick_fall
     #rotate case later here
     end
+
+    @block.fall
   end
 
 
@@ -56,13 +58,18 @@ class Board
   end
 
   def validate_move(coordinate)
-    coordinate.between(0..9)
+    coordinate.between?(0, 9)
   end
 
   def delete_row
   end
 
   def full_row?
+    full = true
+    @display.each do |column|
+      full = false if column[0] == " "
+    end
+    full
   end
 
 end

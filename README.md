@@ -9,6 +9,8 @@ David Jiang
 Leo Ahnn
 
 until lose
+  #create a block
+  #render the grid
   #get input from player
   #give input to board
   #board validates the move, and passes on to block

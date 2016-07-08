@@ -11,8 +11,23 @@ class Tetris
 
   def play
     until lose
-      @player.get_input
+      @board.make_new_block
       @board.render_grid
+      loop do 
+        move = @player.get_input
+          if @board.validate_move(move)
+            @board.move_block(move)
+            break
+          else
+            puts "Invalid choice"
+          end
+      end
+      @board.render_grid
+      
+      if @board.full_row?
+        @board.delete_row
+      end
+
     end
   end
 #   def lose
