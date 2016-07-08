@@ -19,6 +19,9 @@ class Block < DeadBlock
   end
   # def rotate
   def quick_fall
+    until @board.hit_bottom?
+      fall
+    end
     # fall until you hit bottom
   end
   

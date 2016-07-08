@@ -1,6 +1,6 @@
 class Player
 
-  def get_move
+  def get_input
     move=gets.chomp
   end
 

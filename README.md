@@ -13,7 +13,8 @@ until lose
   #render the grid
   #get input from player
   #give input to board
-  #board validates the move, and passes on to block
+  #validate player input (a,s,d)
+  #board validates the move (can it move left or right?), and passes on to block
   #block executes the move and falls one space
   #render grid
   #check for full rows 

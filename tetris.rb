@@ -4,6 +4,9 @@ require_relative "player"
 require_relative "board"
 
 class Tetris
+BOTTOM_ROW_IDX=0
+TOP_ROW_IDX=19
+
   def initialize
     @player = Player.new
     @board = Board.new
@@ -24,11 +27,15 @@ class Tetris
       end
       @board.render_grid
       
-      if @board.full_row?
+      if @board.full_row?(BOTTOM_ROW_IDX)
         @board.delete_row
       end
 
     end
+  end
+
+  def lose
+    @board.full_row?(TOP_ROW_IDX)
   end
 #   def lose
 # # if block is in top 4 rows after landing

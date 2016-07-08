@@ -4,6 +4,7 @@
 class Board
   def initialize
     @blocks=[]
+    @display=Array.new(10){Array.new(20){" "}}
   end
 
   def make_new_block
@@ -31,7 +32,6 @@ class Board
     #go through @block and make an array of all the dead blocks' coordinates
     dead_arr = @blocks.select { |i| i.class == DeadBlock }
     dead_arr.map! { |a| [a.x, a.y]}
-    end
   end
 
   def hit_bottom?
@@ -43,17 +43,24 @@ class Board
   def kill_block
     if hit_bottom?
       @blocks.push(DeadBlock.new(@block.x, @block.y))
-      @blocks.select { |i| i.class == DeadBlock }
+      @blocks.select! { |i| i.class == DeadBlock }
       #this should filter out the active block, leaving only deadblocks
     end
   end
 
   def render_grid
-    @display=Array.new(10){Array.new(20){" "}}
     @blocks.each do |b|
       @display[b.x][b.y]=:x
     end
-    print @display.transpose.reverse
+    binding.pry
+    i=19
+    while i>=0
+      @display.each do |column|
+        print "#{column[i]}|"
+      end
+      puts
+      i-=1
+    end
   #put all the blocks in an array
   end
 
@@ -62,12 +69,24 @@ class Board
   end
 
   def delete_row
+    #move everything down a row
+    @display.each do |column|
+      column.each_with_index do |row, idx|
+        #if top row, set it equal to blanks
+        #else, set it equal to row above
+        if idx==19
+          row=" "
+        else
+          row=column[idx+1]
+        end
+      end
+    end
   end
 
-  def full_row?
+  def full_row?(row_num)
     full = true
     @display.each do |column|
-      full = false if column[0] == " "
+      full = false if column[row_num] == " "
     end
     full
   end
