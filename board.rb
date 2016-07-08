@@ -7,8 +7,7 @@ class Board
   end
 
   def make_new_block
-    @block=Block.new
-    @block.x_coord=[0..9].sample
+    @block=Block.new((0..9).to_a.sample))
     @blocks << @block
   end
 
