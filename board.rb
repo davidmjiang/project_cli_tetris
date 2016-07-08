@@ -41,6 +41,7 @@ class Board
     if hit_bottom?
       @blocks.push(DeadBlock.new(@block.x, @block.y))
       @blocks.select { |i| i.class == DeadBlock }
+      #this should filter out the active block, leaving only deadblocks
     end
   end
 

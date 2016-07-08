@@ -1,3 +1,4 @@
+#Block needs to know about Board in order to use validate_move and hit_bottom?
 class Block < DeadBlock
 
   def initialize(x_coord)
