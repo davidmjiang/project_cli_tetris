@@ -1,3 +1,8 @@
+require_relative "dead_block"
+require_relative "block"
+require_relative "player"
+require_relative "board"
+
 class Tetris
   def initialize
     @player = Player.new
@@ -7,15 +12,12 @@ class Tetris
   def play
     until lose
       @player.get_input
-      @board.make_grid
       @board.render_grid
     end
-
-  def lose
-# if block is in top 4 rows after landing
   end
-
-
+#   def lose
+# # if block is in top 4 rows after landing
+#   end
 end
 
 

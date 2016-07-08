@@ -7,3 +7,12 @@ rack 'em and stack 'em!
 
 David Jiang
 Leo Ahnn
+
+until lose
+  #get input from player
+  #give input to board
+  #board validates the move, and passes on to block
+  #block executes the move and falls one space
+  #render grid
+  #check for full rows 
+end
